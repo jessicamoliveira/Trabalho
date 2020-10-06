@@ -7,7 +7,7 @@ O programa vai ser feito para um estacionamento de veículos onde serão cadastr
 |--------------| -----|------------|
 nome_do_proprietario| Cadeia de caracteres| Nome do Proprietário |
 documento | Real | Cpf do Proprietário|
-numero_contato| Real | Número de contato do Proprietário| 
+numero_contato| Real | Número de Contato do Proprietário| 
 tipo_veiculo | Cadeia de caracteres | Tipo do veiculo |
 nome_veiculo | Cadeia de caractesres| Nome do Veiculo |
 nome_fabricante | Cadeia de caracteres| Nome do Fabricante |
