@@ -30,7 +30,7 @@ CA[600]; // Para a struct
     printf("1 - Para cadastrar um novo veiculo\n\n");
     printf("2 - Consultar os Veiculos Cadastrados \n\n");
     printf("3 - Alteracao de algum elemento cadastrado \n\n");
-    printf("4 - Adicionar Entrada de Veiculo \n\n");
+    printf("4 - Adicionar Entrada de Veiculo \n\n"); 
     printf("5 - Saida do Veiculo\n\n");
     printf("0 - Sair\n\n");
     scanf("%d", &op);
