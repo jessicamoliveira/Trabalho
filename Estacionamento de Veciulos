@@ -1,0 +1,381 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define valor_fixo 3.0
+
+void menuprincipal();
+void menualteracao();
+float resultado(float valor_hora, float valor_total);
+
+ typedef struct horas{
+  int horaent[2], minent[2],horasai[2], minsai[2];
+   int hora_entrada[4], hora_saida[4];
+
+}hr;
+
+int main()
+{
+    FILE *file;
+    file=fopen("C:\\Users\\Jéssica\\Desktop\\arquivo.txt","w");
+    int op,op2,op3,op4, j=1, i=1;
+
+    horas hr;
+
+    int time_total;
+    float valor_hora, valor_total;
+
+    struct cadastro{ // Para registrar as variaveis de cadastro
+      char nome[15],documento[15], telefone[15];
+      char tipo_veiculo[20], modelo_veiculo[20], fabricante[20], cor[10], placa[10];
+    }CA[600]; // Para a struct
+
+  fprintf(file,"\nCasdastros Relalizados\n");
+  while(op!=0){
+    system("cls"); // Função para limpar a tela
+    system("color F1"); //Função para mudar a cor do programa
+    menuprincipal();
+    scanf("%d", &op);
+
+    switch (op){
+     case 1 : //  Operação de Cadastro
+
+
+                system("cls");// Função para limpar a tela
+                printf("Iniciando cadastro %d \n",i);
+                fprintf(file,"Cadastro %d \n\n", i);
+                printf("Nome do proprietario:\t");
+                fflush(stdin); // É usado para limpar o buffer do teclado
+                scanf("%s",CA [i].nome); //scanf para o struct (unico jeito que compilou no meu Code Blocks)
+                fprintf(file,"Nome: %s \n", CA[i].nome);
+                printf("Numero do CPF <apenas numeros>:\t");
+                fflush(stdin);
+                scanf("%[^\n]",CA [i].documento);
+                fprintf(file,"CPF: %s \n", CA[i].documento);
+                printf("Telefone para contato seguindo o formato <DDD> <numero>:\t");
+                fflush(stdin);
+                scanf("%[^\n]s",CA [i].telefone);
+                fprintf(file,"Telefone: %s \n", CA[i].telefone);
+                printf("Tipo de veiculo:\t");
+                fflush(stdin);
+                scanf("%[^\n]s", CA [i].tipo_veiculo);
+                fprintf(file,"Tipo de Veiculo: %s \n", CA[i].tipo_veiculo);
+                printf("Modelo do Veiculo:\t");
+                fflush(stdin);
+                scanf("%[^\n]s", CA [i].modelo_veiculo);
+                fprintf(file,"Modelo Veiculo: %s \n", CA[i].modelo_veiculo);
+                printf("Nome do Fabricante:\t");
+                fflush(stdin);
+                scanf("%[^\n]s", CA [i].fabricante);
+                fprintf(file,"Nome do Fabricante: %s \n", CA[i].fabricante);
+                printf("Cor do Veiculo:\t");
+                fflush(stdin);
+                scanf("%[^\n]s", CA[i].cor);
+                fprintf(file,"Cor do veiculo: %s \n", CA[i].cor);
+                printf("Placa:\t");
+                fflush(stdin);
+                scanf("%[^\n]s", CA[i].placa);
+                fprintf(file,"Placa: %s \n", CA[i].placa);
+                i++;
+
+                printf("\n\nCadastro Realizado com sucesso!\n");
+                system("pause"); // Função para Voltar ao menu principal
+
+        break; // Encerra o case
+
+
+     case 2: // Operação para Consultar os cadastros
+        system("cls");
+       for(j=1;j<=10;j++){
+            if(j<i){
+              void consulta();
+            }
+            else{
+                j=10;
+            }
+        }
+        break;
+
+     case 3 : // Operação para alterar algum cadastro
+        system("cls");
+        menualteracao();
+        scanf("%d", &op2);
+
+           switch(op2){
+      case 1 : //  Operação para Alteração do Nome
+
+     for(j=1;j<=10;j++){
+        if(j<i){
+        system("cls");
+        printf("\t Cadastro Numero: %d\n\n",j);
+        printf("Alteracao do nome proprietario\n");
+        printf("Nome atual do proprietario: %s \n", CA [j].nome);
+        printf("Novo nome do proprietario:\n (Enter para manter o nome atual)\n ");
+        fflush(stdin);
+        scanf("%[^\n]s", CA [j].nome);
+        printf("O nome foi alterado para %s com sucesso! \n",CA [j].nome);
+        system("pause");
+        }
+        else{
+            j=10;
+        }
+     }
+     break;
+
+    case 2: //  Operação para Alteração do CPF
+        for(j=1;j<=10;j++){
+        if(j<i){
+            system("cls");
+            printf("Cadastro numero: %d\n\n",j );
+            printf("Alteracao do CPF do proprietario \n");
+            printf("Atual cadastrado %s", CA [j].documento);
+            printf("Novo CPF: \n (Enter para manter o CPF atual)\n");
+            fflush(stdin);
+            scanf("%[^\n]s", CA [j].documento);
+            printf("O CPF foi alterado para %s com sucesso \n", CA [j].documento);
+            system("pause");
+        }
+        else{
+            j=10;
+        }
+      }
+      break;
+
+    case 3: //  Operação para Alteração do Telefone
+         for(j=1;j<=10;j++){
+        if(j<i){
+            system("cls");
+            printf("Cadastro numero: %d\n\n",j );
+            printf("Alteracao do Telefone do proprietario \n");
+            printf("Atual cadastrado %s", CA [j].telefone);
+            printf("Novo Telefone: \n (Enter para manter o Telefone atual)\n");
+            fflush(stdin);
+            scanf("%[^\n]s", CA [j].telefone);
+            printf("O Telefone foi alterado para %s com sucesso \n", CA [j].telefone);
+            system("pause");
+        }
+        else{
+            j=10;
+        }
+      }
+      break;
+
+    case 4: //  Operação para Alteração do Tipo de Veiculo
+         for(j=1;j<=10;j++){
+        if(j<i){
+            system("cls");
+            printf("Cadastro numero: %d\n\n",j );
+            printf("Alteracao do Tipo de Veiculo \n");
+            printf("Atual cadastrado %s", CA [j].tipo_veiculo);
+            printf("Novo Tipo Veiculo : \n (Enter para manter o atual)\n");
+            fflush(stdin);
+            scanf("%[^\n]s", CA [j].tipo_veiculo);
+            printf("O Tipo de Veiculo foi alterado para %s com sucesso \n", CA [j].tipo_veiculo);
+            system("pause");
+        }
+        else{
+            j=10;
+        }
+      }
+      break;
+
+    case 5: //  Operação para Alteração do modelo do veiculo
+         for(j=1;j<=10;j++){
+        if(j<i){
+            system("cls");
+            printf("Cadastro numero: %d\n\n",j );
+            printf("Alteracao do Modelo do Veiculo \n");
+            printf("Atual cadastrado %s", CA [j].modelo_veiculo);
+            printf("Novo Modelo : \n (Enter para manter o atual)\n");
+            fflush(stdin);
+            scanf("%[^\n]s", CA [j].modelo_veiculo);
+            printf("O Modelo do Veiculo  foi alterado para %s com sucesso \n", CA [j].modelo_veiculo);
+            system("pause");
+        }
+        else{
+            j=10;
+        }
+      }
+      break;
+
+    case 6: //  Operação para Alteração do Fabricante
+         for(j=1;j<=10;j++){
+        if(j<i){
+            system("cls");
+            printf("Cadastro numero: %d\n\n",j );
+            printf("Alteracao do Fabricante do Veiculo \n");
+            printf("Atual cadastrado %s", CA [j].fabricante);
+            printf("Novo Fabricante: \n (Enter para manter o atual)\n");
+            fflush(stdin);
+            scanf("%[^\n]s", CA [j].fabricante);
+            printf("O Fabricante do Veiculo foi alterado para %s com sucesso \n", CA [j].fabricante);
+            system("pause");
+        }
+        else{
+            j=10;
+        }
+      }
+      break;
+
+    case 7: //  Operação para Alteração da Cor do Veiculo
+         for(j=1;j<=10;j++){
+        if(j<i){
+            system("cls");
+            printf("Cadastro numero: %d\n\n",j );
+            printf("Alteracao da Cor do Veiculo \n");
+            printf("Atual cadastrado %s", CA [j].cor);
+            printf("Nova cor do veiculo: \n (Enter para manter a atual)\n");
+            fflush(stdin);
+            scanf("%[^\n]s", CA [j].cor);
+            printf("A cor do veiculo foi alterada para %s com sucesso \n", CA [j].cor);
+            system("pause");
+        }
+        else{
+            j=10;
+        }
+      }
+      break;
+
+    case 8: //  Operação para Alteração da Placa
+     for(j=1;j<=10;j++){
+        if(j<i){
+            system("cls");
+            printf("Cadastro numero: %d\n\n",j );
+            printf("Alteracao da Placa do Veiculo \n");
+            printf("Atual cadastrado %s", CA [j].placa);
+            printf("Nova Placa: \n (Enter para manter a atual)\n");
+            fflush(stdin);
+            scanf("%[^\n]s", CA [j].placa);
+            printf("A placa do veiculo foi alterada para %s com sucesso \n", CA [j].placa);
+            system("pause");
+        }
+        else{
+            j=10;
+        }
+      }
+      break;
+
+    case 9: //  Operação para voltar ao menu principal
+        break;
+    }
+    break;
+
+    case 4: // Operação para adicionar a entrada de um veiculo já cadastrado
+        system("cls");
+        for(j=1;j<=10;j++){
+        if(j<i){
+        printf("Adicionar Entrada de Veiculo\n\n");
+
+            printf("Nome: %s\t", CA [j].nome);
+            printf("CPF: %s\t", CA [j].documento);
+            printf("Telefone: %s\n\n",CA [j].telefone);
+            printf("Tipo de Veiculo: %s\t", CA [j].tipo_veiculo);
+            printf("Modelo do veiculo: %s\t", CA[j].modelo_veiculo);
+            printf("Nome do Fabricante: %s\n\n", CA[j].fabricante);
+            printf("Cor do veiculo: %s\t", CA[j].cor);
+            printf("Placa do veiculo: %s\n\n", CA[j].placa);
+            printf("Adicionar a entrada deste Veiculo cadastrado?\n\n");
+            printf("1 - SIM \t 2 - NAO\n\n");
+            scanf("%d",&op3);
+
+          if(op3==1){
+               system("cls");
+               printf("Adicionar a entrada do veiculo\n");
+               printf("\nDigite a hora da Entrada no formato <horas> ENTER <minutos>:\n ");
+               scanf("%d""%d",hr[j].horaent,hr[j].minent);// Pegando os dados de entrada
+               hr[j].hora_entrada = (hr[j].horaent*60) + ht[j].minent;
+
+               system("pause");
+               break;
+          }
+
+          if(op3==2){
+            system("pause");
+            system("cls");
+
+          }
+
+        }
+        }
+
+     break;
+
+    case 5: // Operação para adicionar a saida de um veiculo
+         system("cls");
+        for(j=1;j<=10;j++){
+        if(j<i){
+        printf("Adicionar Saida de Veiculo\n\n");
+
+            printf("Nome: %s\t", CA [j].nome);
+            printf("CPF: %s\t", CA [j].documento);
+            printf("Telefone: %s\n\n",CA [j].telefone);
+            printf("Tipo de Veiculo: %s\t", CA [j].tipo_veiculo);
+            printf("Modelo do veiculo: %s\t", CA[j].modelo_veiculo);
+            printf("Nome do Fabricante: %s\n\n", CA[j].fabricante);
+            printf("Cor do veiculo: %s\t", CA[j].cor);
+            printf("Placa do veiculo: %s\n\n", CA[j].placa);
+            printf("Hora da Entreda %d:%d \n", horaent[j],minent[j]);
+            printf("Adicionar saida deste Veiculo?\n\n");
+            printf("1 - SIM \t 2 - NAO\n\n");
+            scanf("%d",&op4);
+
+        switch(op4){
+
+      case 1:
+      system("cls");
+      printf("\nDigite a hora de saida no formato <horas>ENTER<minutos>:\n");
+      scanf("%d""%d", hr[j].horasai, hr[j].minsai);// Pegando os dados da saida
+      hora_saida[j]= (hr[j].horasai*60)+hr[j].minsai; // Operaão para transformar as horas em minutos e somar com os minutos
+      time_total= hr[j].hora_saida- hr[j].hora_entrada;// Operação para saber quanto tempo o veiculo ficou estacionado
+      valor_hora= time_total * 0.10;
+      valor_total= resultado(valor_hora,valor_total);
+      horaent[j]=0; // Para zerar a hora de entrada
+      minent[j]=0;
+
+    printf("O carro do cliente ficou %d minutos no estacionamento, e o valor total a pagar e de R$%2.f\n\n",time_total, valor_total);
+    printf("Obrigada e Volte Sempre!!\n\n"); // Saida da quantia do valor a pagar
+
+               system("pause");
+
+               break;
+        }
+        }
+        }
+
+  }
+  }
+
+    fclose(file);
+
+    return 0;
+}
+void menuprincipal(){
+   // Menu principal
+    printf("------------------------------------------- \n");
+    printf("\t Estacionamento de Veiculos \n");
+    printf("-------------------------------------------- \n");
+    printf("1 - Para cadastrar um novo veiculo\n\n");
+    printf("2 - Consultar os Veiculos Cadastrados \n\n");
+    printf("3 - Alteracao de algum elemento cadastrado \n\n");
+    printf("4 - Adicionar Entrada de Veiculo \n\n");
+    printf("5 - Saida do Veiculo\n\n");
+    printf("0 - Sair\n\n");
+}
+
+void menualteracao(){
+printf("\t Alteracao \n");
+        printf("Escolha a opcao que quer alterar\n\n");
+        printf("1 - Nome do Proprietario\n\n");
+        printf("2 - CPF do Proprietario\n\n");
+        printf("3 - Telefone de contato\n\n");
+        printf("4 - Tipo do veiculo\n\n");
+        printf("5 - Modelo do Veiculo\n\n");
+        printf("6 - Fabricante do Veiculo\n\n");
+        printf("7 - Cor do Veiculo\n\n");
+        printf("8 - Placa do Veiculo\n\n");
+        printf("9 - Para voltar para Menu Principal\n\n");
+}
+
+float resultado(float valor_hora, float valor_total){
+      valor_total= valor_hora + 3;
+      return valor_total;
+}
+
